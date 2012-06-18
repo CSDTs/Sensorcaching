@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="titlebackgroundcolor">#FF323331</color>
+    <color name="titletextcolor">#FFFFFFFF</color>
+    <color name="maintextcolor">#FF000000</color>
+    <color name="boxbackgroundcolor">#29FFFFFF</color>
+    <color name="boxbackgroundpressed">#99FFB145</color>
+    <color name="boxbordercolor">#402FA125</color>
+    <color name="boxtextcolor">#FF000000</color>
+</resources>

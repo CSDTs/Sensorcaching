@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/item_mylocation" android:title="My Location" android:icon="@android:drawable/ic_menu_mylocation"></item>
+    <item android:id="@+id/item_mapmode" android:title="Map Mode" android:icon="@android:drawable/ic_menu_mapmode"></item>
+    <item android:id="@+id/item_search" android:title="Search" android:icon="@android:drawable/ic_menu_search"></item>
+    <item android:id="@+id/item_advanced_search" android:title="Advanced Search" android:icon="@android:drawable/ic_menu_search"></item>
+    <item android:id="@+id/item_settings" android:title="Preferences" android:icon="@android:drawable/ic_menu_preferences"></item>
+    <item android:id="@+id/item_help" android:title="Help" android:icon="@android:drawable/ic_menu_help"></item>
+</menu>

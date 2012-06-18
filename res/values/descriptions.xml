@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="user_image">User Avatar</string>
+    <string name="menu_button"> </string>
+    <string name="search_button">Search Button</string>
+    <string name="status">Status of Sensor</string>
+    <string name="compass">Compass</string>
+</resources>

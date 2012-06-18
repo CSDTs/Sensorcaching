@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:orientation="vertical"
+    	android:layout_alignParentLeft="true"> 
+	    <ImageView
+	        android:id="@+id/item_icon"
+	        android:layout_width="30dp"
+	        android:layout_height="24dp"
+	        android:layout_marginLeft="4dp"
+	        android:layout_marginRight="8dp"
+	        android:layout_centerVertical="true"
+	        android:src="@+id/ItemIcon01" 
+	        android:contentDescription="@string/status"/>
+	    
+	
+	    <TextView
+	        android:id="@+id/item_name"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="4dp"
+	        android:layout_toRightOf="@+id/item_icon"
+	        android:text="@+id/ItemTextView01"
+	        android:textColor="@color/maintextcolor"
+	        android:textStyle="bold"
+	        android:textSize="16dp " >
+	
+	    </TextView>
+	    
+	    <TextView
+	        android:id="@+id/item_type"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/item_name"
+	        android:layout_toRightOf="@+id/item_icon"
+	        android:lines="1"
+	        android:text="@+id/ItemTextView02"
+	        android:textColor="@color/maintextcolor"
+	        android:textSize="10dp ">
+	    </TextView>   
+	</RelativeLayout>
+	
+    <LinearLayout
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:orientation="vertical"
+    	android:layout_alignParentRight="true"> 
+	    <TextView
+	        android:id="@+id/item_direction"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"  
+	        android:layout_marginLeft="5dp"     
+	        android:lines="1"
+	        android:text="@+id/ItemTextView03"
+	        android:textColor="@color/maintextcolor"
+	        android:textSize="10dp "
+	        android:drawableLeft="@+id/item_compass" >
+	    </TextView>   
+	    
+	    <TextView
+	        android:id="@+id/item_distance"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="5dp"     
+	        android:text="@+id/ItemTextView04"
+	        android:textColor="@color/maintextcolor"
+	        android:textSize="10dp ">
+	    </TextView>  
+	 
+	</LinearLayout>    
+</RelativeLayout>

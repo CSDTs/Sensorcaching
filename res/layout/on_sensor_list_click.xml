@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@drawable/background"
+	android:padding="4dp" >
+	
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"  
+	    android:orientation="vertical" >
+	    
+	    <LinearLayout
+	        android:id="@+id/click_top_holder"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:padding="4dp"
+	        android:orientation="vertical"
+	        android:background="@drawable/layout_border">
+	        
+	        <RelativeLayout
+		        android:layout_width="wrap_content"
+		    	android:layout_height="wrap_content"
+		    	android:orientation="vertical"> 
+			    <ImageView
+			        android:id="@+id/click_item_icon"
+			        android:layout_width="30dp"
+			        android:layout_height="24dp"
+			        android:layout_marginLeft="4dp"
+			        android:layout_marginRight="8dp"
+			        android:layout_centerVertical="true"
+			        android:src="@+id/ItemIcon01" 
+			        android:contentDescription="@string/status"/>
+			    
+			
+			    <TextView
+			        android:id="@+id/click_item_name"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginTop="4dp"
+			        android:layout_toRightOf="@+id/click_item_icon"
+			        android:text="@+id/ItemTextView01"
+			        android:textColor="@color/boxtextcolor"
+			        android:textStyle="bold"
+			        android:textSize="16dp " >
+			
+			    </TextView>
+			    
+			    <TextView
+			        android:id="@+id/click_item_creator"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_below="@+id/click_item_name"
+			        android:layout_toRightOf="@+id/click_item_icon"
+			        android:lines="1"
+			        android:text="@+id/ItemTextView02"
+			        android:textColor="@color/boxtextcolor"
+			        android:textSize="10dp ">
+			    </TextView>   
+			</RelativeLayout>
+			
+		    <View
+		        android:layout_width="fill_parent"
+		        android:layout_height="2dp"
+		        android:padding="10dp"
+		        android:background="@color/boxbordercolor" >
+		    </View>
+		    
+		    <TextView
+		        android:id="@+id/click_item_type"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+				android:padding="5dp"
+		        android:lines="1"
+		        android:text="@+id/click_ItemTextView03"
+		        android:textColor="@color/boxtextcolor"
+		        android:textStyle="bold"
+		        android:textSize="10dp">
+		    </TextView>
+		    
+		    <View
+		        android:layout_width="fill_parent"
+		        android:layout_height="2dp"
+		        android:padding="10dp"
+		        android:background="@color/boxbordercolor" >
+		    </View>
+		    
+		    <TextView
+		        android:id="@+id/click_item_lat"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:paddingTop="5dp"
+		        android:paddingLeft="5dp"
+		        android:lines="1"
+		        android:text="@+id/click_ItemTextView04"
+		        android:textColor="@color/boxtextcolor"
+		        android:textStyle="bold"
+		        android:textSize="10dp ">
+		    </TextView>
+		    
+		    <TextView
+		        android:id="@+id/click_item_lon"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:paddingLeft="5dp"
+		        android:paddingBottom="5dp"
+		        android:lines="1"
+		        android:text="@+id/click_ItemTextView05"
+		        android:textColor="@color/boxtextcolor"
+		        android:textStyle="bold"
+		        android:textSize="10dp ">
+		    </TextView>
+		    
+		    <LinearLayout 
+		        android:layout_width="match_parent"
+	    		android:layout_height="wrap_content"  
+	    		android:orientation="horizontal">
+			    
+			    <TextView
+			        android:id="@+id/click_item_direction"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:padding="5dp"
+			        android:lines="1"
+			        android:text="@+id/click_ItemTextView06"
+			        android:textColor="@color/boxtextcolor"
+			        android:textStyle="bold"
+			        android:textSize="10dp "
+	        		android:drawableLeft="@+id/item_compass" >
+			    </TextView>
+			    
+			    <TextView
+			        android:id="@+id/click_item_distance"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:padding="5dp"
+			        android:lines="1"
+			        android:text="@+id/click_ItemTextView07"
+			        android:textColor="@color/boxtextcolor"
+			        android:textSize="10dp ">
+			    </TextView>
+		    
+		    </LinearLayout>
+		    
+		    <View
+		        android:layout_width="fill_parent"
+		        android:layout_height="2dp"
+		        android:padding="10dp"
+		        android:background="@color/boxbordercolor" >
+		    </View>
+		    
+		    <RelativeLayout
+		        android:layout_width="wrap_content"
+		    	android:layout_height="wrap_content"
+		    	android:orientation="horizontal">
+			    <TextView
+			        android:id="@+id/click_item_hide_date"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:paddingTop="5dp"
+			        android:gravity = "left"
+			        android:layout_marginLeft="5dp"
+			        android:paddingBottom="5dp"
+			        android:lines="1"
+			        android:text="@+id/click_ItemTextView08"
+			        android:textColor="@color/boxtextcolor"
+			        android:textSize="10dp">
+			    </TextView>
+			    
+			    <TextView
+			        android:id="@+id/click_item_last_date"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:paddingTop="5dp"
+			        android:gravity = "right"
+			        android:layout_marginRight="5dp"
+			        android:paddingBottom="5dp"
+			        android:lines="1"
+			        android:text="@+id/click_ItemTextView09"
+			        android:textColor="@color/boxtextcolor"
+			        android:textSize="10dp">
+			    </TextView>
+		    </RelativeLayout>
+		</LinearLayout>
+	
+	    <View
+		    android:layout_width="fill_parent"
+		    android:layout_height="4dp" >
+		</View>
+	    
+	    <TableLayout
+	        android:id="@+id/click_mid_top_holder"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" 
+	        android:background="@drawable/layout_border"
+	        android:padding="5dp">
+	        <TableRow
+	            android:id="@+id/click_tableRow_navigate"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:background="@android:drawable/list_selector_background"
+	            android:clickable = "true">
+	            <TextView 
+	                android:text="@string/c_navigate_to"
+	                android:paddingTop="4dp"
+	        		android:paddingBottom="4dp"
+	                android:textColor="@color/boxtextcolor"
+	                android:textStyle="bold"
+		        	android:textSize="16dp"/>
+	        </TableRow>
+	    </TableLayout>
+	    
+	    <View
+		    android:layout_width="fill_parent"
+		    android:layout_height="4dp" >
+		</View>
+	    
+	    <TableLayout
+	        android:id="@+id/click_mid_holder"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" 
+	        android:background="@drawable/layout_border"
+	        android:padding="5dp">
+	
+	        <TableRow
+	            android:id="@+id/click_tableRow_description"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:background="@android:drawable/list_selector_background"
+	            android:clickable = "true">
+	            <TextView 
+	                android:text="@string/c_description"
+	                android:paddingTop="4dp"
+	       			android:paddingBottom="4dp"
+	                android:textColor="@color/boxtextcolor"
+	                android:textStyle="bold"
+		        	android:textSize="16dp"/>
+	        </TableRow>
+	        
+	        <View
+			    android:layout_width="fill_parent"
+			    android:layout_height="2dp"
+			    android:background="@color/boxbordercolor" >
+		    </View>
+	
+	        <TableRow
+	            android:id="@+id/click_tableRow_hint"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:background="@android:drawable/list_selector_background"
+	            android:clickable = "true">
+	            <TextView 
+	                android:text="@string/c_hint"
+	                android:paddingTop="4dp"
+	        		android:paddingBottom="4dp"
+	                android:textColor="@color/boxtextcolor"
+	                android:textStyle="bold"
+		        	android:textSize="16dp"/>
+	        </TableRow>
+	        
+	        <View
+			    android:layout_width="fill_parent"
+			    android:layout_height="2dp"
+			    android:background="@color/boxbordercolor" >
+		    </View>
+	
+	        <TableRow
+	            android:id="@+id/click_tableRow_attributes"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:background="@android:drawable/list_selector_background"
+	            android:clickable = "true">
+	            <TextView 
+	                android:text="@string/c_attributes"
+	                android:paddingTop="4dp"
+	        		android:paddingBottom="4dp"
+	                android:textColor="@color/boxtextcolor"
+	                android:textStyle="bold"
+		        	android:textSize="16dp"/>
+	        </TableRow>
+	        
+	        <View
+			    android:layout_width="fill_parent"
+			    android:layout_height="2dp"
+			    android:background="@color/boxbordercolor" >
+		    </View>
+	        
+	        <TableRow
+	            android:id="@+id/click_tableRow_photo"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:background="@android:drawable/list_selector_background"
+	            android:clickable = "true">
+	            <TextView 
+	                android:text="@string/c_photo"
+	                android:paddingTop="4dp"
+	        		android:paddingBottom="4dp"
+	                android:textColor="@color/boxtextcolor"
+	                android:textStyle="bold"
+		        	android:textSize="16dp"/>
+	        </TableRow>  
+		</TableLayout>
+	    
+	    <View
+		    android:layout_width="fill_parent"
+		    android:layout_height="4dp" >
+		</View>
+	    
+	    <TableLayout
+	        android:id="@+id/click_mid_bottom_holder"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" 
+	        android:background="@drawable/layout_border"
+	        android:padding="5dp">
+	        <TableRow
+	            android:id="@+id/click_tableRow_save"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:background="@android:drawable/list_selector_background"
+	            android:clickable = "true">
+	            <TextView 
+	                android:text="@string/c_save"
+	                android:paddingTop="4dp"
+	        		android:paddingBottom="4dp"
+	                android:textColor="@color/boxtextcolor"
+	                android:textStyle="bold"
+		        	android:textSize="16dp"/>
+	        </TableRow>
+	        
+	        <View
+			    android:layout_width="fill_parent"
+			    android:layout_height="2dp"
+			    android:background="@color/boxbordercolor">
+		    </View>
+	        
+	        <TableRow
+	            android:id="@+id/click_tableRow_share"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:background="@android:drawable/list_selector_background"
+	            android:clickable = "true">
+	            <TextView 
+	                android:text="@string/c_share"
+	                android:paddingTop="4dp"
+	        		android:paddingBottom="4dp"
+	                android:textColor="@color/boxtextcolor"
+	                android:textStyle="bold"
+		        	android:textSize="16dp"/>
+	        </TableRow>
+	        
+	        <View
+			    android:layout_width="fill_parent"
+			    android:layout_height="2dp"
+			    android:background="@color/boxbordercolor" >
+		    </View>
+	        
+	        <TableRow
+	            android:id="@+id/click_tableRow_graph"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:background="@android:drawable/list_selector_background"
+	            android:clickable = "true">
+	            <TextView 
+	                android:text="@string/c_graph"
+	                android:paddingTop="4dp"
+	        		android:paddingBottom="4dp"
+	                android:textColor="@color/boxtextcolor"
+	                android:textStyle="bold"
+		        	android:textSize="16dp"/>
+	        </TableRow>
+	     </TableLayout>   
+	    
+	    <View
+		    android:layout_width="fill_parent"
+		    android:layout_height="4dp" >
+		</View>
+	    
+		<TableLayout
+	        android:id="@+id/click_bottom_holder"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" 
+	        android:background="@drawable/layout_border"
+	        android:padding="5dp">        
+	        
+	        <TableRow
+	            android:id="@+id/click_tableRow_nearby"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:background="@android:drawable/list_selector_background"
+	            android:clickable = "true">
+	            <TextView 
+	                android:text="@string/c_nearby"
+	                android:paddingTop="4dp"
+	        		android:paddingBottom="4dp"
+	                android:textColor="@color/boxtextcolor"
+	                android:textStyle="bold"
+		        	android:textSize="16dp"/>
+	        </TableRow>
+	        
+	        <View
+			    android:layout_width="fill_parent"
+			    android:layout_height="2dp"
+			    android:background="@color/boxbordercolor" >
+		    </View>
+	        
+	        <TableRow
+	            android:id="@+id/click_tableRow_web"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:background="@android:drawable/list_selector_background"
+	            android:clickable = "true">
+	            <TextView 
+	                android:text="@string/c_web"
+	                android:paddingTop="4dp"
+	        		android:paddingBottom="4dp"
+	                android:textColor="@color/boxtextcolor"
+	                android:textStyle="bold"
+		        	android:textSize="16dp"/>
+	        </TableRow>
+	    </TableLayout>
+	    
+</LinearLayout>
+</ScrollView>

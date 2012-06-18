@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!--  App Name -->
+    <string name="hello">Hello World, Main!</string>
+    <string name="app_name">Sensorcaching</string>
+    
+    <!--  About Page -->
+    <string name="app_sponser"></string>
+    <string name="about_app">About Sensorcaching</string>
+    <string name="about_message">Sensor-caching is designed by a group of students at Rensselaer Polytechnic Institute through the NSF Triple Helix program. Sensor-caching is environmental sensing using a combination of open-source technologies with a fun, GPS enabled treasure hunting game.  The objective of the game is to locate a hidden sensor and upload the sensed environmental data with this mobile app to our website (communitysensors.rpi.edu) that visualizes this information.  We want to combine existing mobile technology with low-fi sensor devices in respect to their ability to evaluate local environments, facilitate environmental GK-12 education, contribute to a larger body of science, and overall be fun. For more information, please visit our website:</string>
+     
+    <!--  Login Information -->
+    <string name="username"> Username</string>
+    <string name="password"> Password</string>
+    <string name="login">      Login      </string>
+    <string name="keep_login">Stay logged in?</string>
+    
+    <!--  SensorListClick -->
+    <string name="c_navigate_to">Navigate to Sensor</string>
+    <string name="c_description">Description</string>
+    <string name="c_hint">Hint</string>
+    <string name="c_attributes">Attributes</string>
+    <string name="c_photo">Photos</string>
+    <string name="c_save">Save as a My Sensor</string> 
+    <string name="c_share">Share Information About Sensor</string>
+    <string name="c_graph">Graph Sensor Information</string>
+    <string name="c_nearby">Find Nearby Sensors</string>
+    <string name="c_web">View on Web</string>
+    
+    <!--  Generic Statement -->
+    <string name="unable_to_load">Unable to Load Your Requested Information</string>
+    
+    <!--  BluetoothActivity -->
+    <string name="b_connect">Connect to Sensor</string>
+    <string name="b_upload">Upload Information</string>
+    <string name="b_get">Get Information</string>
+    
+    <!--  BluetoothChat -->
+    <string name="send">Send</string>
+    <string name="not_connected">You are not connected to a device</string>
+    <string name="bt_not_enabled_leaving">Bluetooth was not enabled. Cannot connect to sensor.</string>
+    <string name="title_connecting">Connecting....</string>
+    <string name="title_connected_to">Connected: </string>
+    <string name="title_not_connected">Not Connected</string>
+
+    <!--  DeviceListActivity -->
+    <string name="scanning">Scanning for devices....</string>
+    <string name="select_device">Select a device to connect</string>
+    <string name="none_paired">No devices have been paired</string>
+    <string name="none_found">No devices found</string>
+    <string name="title_paired_devices">Paired Devices</string>
+    <string name="title_other_devices">Other Available Devices</string>
+    <string name="button_scan">Scan for devices</string>
+
+    <!-- Options Menu -->
+    <string name="connect">Connect a device</string>
+    <string name="discoverable">Make discoverable</string>
+</resources>

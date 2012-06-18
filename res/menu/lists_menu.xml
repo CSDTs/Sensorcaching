@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/item_sort" android:title="Sort List" android:icon="@android:drawable/ic_menu_sort_by_size"></item>
+    <item android:id="@+id/item_maps" android:title="View on Map" android:icon="@android:drawable/ic_menu_mapmode"></item>
+    <item android:id="@+id/item_advanced_search" android:title="Advanced Search" android:icon="@android:drawable/ic_menu_search"></item>
+    <item android:id="@+id/item_save" android:title="Save" android:icon="@android:drawable/ic_menu_save"></item>
+    <item android:id="@+id/item_settings" android:title="Preferences" android:icon="@android:drawable/ic_menu_preferences"></item>
+    <item android:id="@+id/item_help" android:title="Help" android:icon="@android:drawable/ic_menu_help"></item>
+</menu>

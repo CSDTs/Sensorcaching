@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@drawable/background">
+
+    <TextView
+        android:id="@+id/b_textsensorname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/maintextcolor"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:text="@+id/b_text" />
+    <Button
+        android:id="@+id/b_butconnect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/b_connect" />
+
+    <Button
+        android:id="@+id/b_butget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/b_get"/>
+
+    <ListView
+        android:id="@+id/b_filelist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:stackFromBottom="true"
+        android:transcriptMode="alwaysScroll" >
+    </ListView>
+    
+    <Button
+        android:id="@+id/b_butupload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/b_upload" />
+
+</LinearLayout>
