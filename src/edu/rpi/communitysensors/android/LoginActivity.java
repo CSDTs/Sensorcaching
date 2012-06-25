@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.insready.drupalcloud.*;
+
 public class LoginActivity extends Activity{
 	private EditText user;
 	private EditText pw;
@@ -22,6 +24,8 @@ public class LoginActivity extends Activity{
 	private Boolean keep_logged;	
 	private Boolean am_logged;
 	private Boolean is_valid;
+	
+	private RESTServerClient rsc;
 	
 	private SharedPreferences login_preferences;
 	
@@ -39,7 +43,10 @@ public class LoginActivity extends Activity{
 	    getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,R.layout.window_title);
 	    TextView title = (TextView) findViewById(R.id.title);
         title.setText("  Login");
-           
+        
+        //The following sets up the REST server client init parameters
+        rsc = new RESTServerClient(getApplicationContext(), "Session", "http://www.communitysensors.rpi.edu/?q=testserv/", "testserv", new Long(1800000));
+        
         //Set the items in the layout
         user = (EditText) findViewById(R.id.editText_username);
         pw = (EditText) findViewById(R.id.editText_password);
@@ -82,13 +89,21 @@ public class LoginActivity extends Activity{
     //Verify if login is correct
     private void login(String username, String passwrod) {
     	//check if login is correct
-    	is_valid = true;
+    	try {
+			String res = rsc.userLogin(username, password);
+			System.out.println(res);
+			is_valid = true;
+		} catch (ServiceNotAvailableException e) {
+			e.printStackTrace();
+			is_valid = false;
+		}
     	
     	if(is_valid) {
     		SharedPreferences.Editor editor = login_preferences.edit();
             editor.putString("username", user_name);
             editor.putString("password", password);
             editor.commit(); 
+            Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(getApplicationContext(), Main.class);
             startActivity(i);
     	}
