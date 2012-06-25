@@ -1,3 +1,5 @@
 bin/*
 gen/*
 gen/edu/rpi/communitysensors/android/R.java
+
+.DS_Store
