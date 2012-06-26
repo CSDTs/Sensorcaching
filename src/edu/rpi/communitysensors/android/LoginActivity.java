@@ -89,10 +89,16 @@ public class LoginActivity extends Activity{
     //Verify if login is correct
     private void login(String username, String passwrod) {
     	//check if login is correct
+    	String res = "";
     	try {
-			String res = rsc.userLogin(username, password);
+			res = rsc.userLogin(username, password);
 			System.out.println(res);
-			is_valid = true;
+			if (res != null && !res.equals("null")) {
+				is_valid = true;
+			} else {
+				is_valid = false;
+			}
+			
 		} catch (ServiceNotAvailableException e) {
 			e.printStackTrace();
 			is_valid = false;
@@ -102,6 +108,7 @@ public class LoginActivity extends Activity{
     		SharedPreferences.Editor editor = login_preferences.edit();
             editor.putString("username", user_name);
             editor.putString("password", password);
+            editor.putString("resVals", res);
             editor.commit(); 
             Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(getApplicationContext(), Main.class);
