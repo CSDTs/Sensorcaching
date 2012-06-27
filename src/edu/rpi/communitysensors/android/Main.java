@@ -3,6 +3,7 @@ package edu.rpi.communitysensors.android;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
@@ -221,5 +222,17 @@ public class Main extends Activity {
   	@Override
   	protected void onPause() {  		 
   		super.onPause();	
+  	}
+  	
+  	@Override
+  	protected void onDestroy() {
+  		super.onDestroy();
+  		if (this.isFinishing()) {
+  			SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+  			Boolean am_logged = prefs.getBoolean("am_logged", false);
+  			Editor ed = prefs.edit();
+  			ed.putBoolean("am_logged", false);
+  			ed.commit();
+  		}
   	}
 }

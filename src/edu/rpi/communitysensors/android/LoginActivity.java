@@ -45,7 +45,7 @@ public class LoginActivity extends Activity{
         title.setText("  Login");
         
         //The following sets up the REST server client init parameters
-        rsc = new RESTServerClient(getApplicationContext(), "Session", "http://www.communitysensors.rpi.edu/?q=testserv/", "testserv", new Long(1800000));
+        rsc = new RESTServerClient(getApplicationContext(), "communitysensors.RSC", "http://www.communitysensors.rpi.edu/?q=testserv/", "testserv", new Long(1800000));
         
         //Set the items in the layout
         user = (EditText) findViewById(R.id.editText_username);
@@ -108,7 +108,8 @@ public class LoginActivity extends Activity{
     		SharedPreferences.Editor editor = login_preferences.edit();
             editor.putString("username", user_name);
             editor.putString("password", password);
-            editor.putString("resVals", res);
+            am_logged = true;
+            editor.putBoolean("am_logged", am_logged);
             editor.commit(); 
             Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(getApplicationContext(), Main.class);
