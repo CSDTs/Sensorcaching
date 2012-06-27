@@ -18,6 +18,7 @@ import android.widget.Toast;
 public class OnSensorListClick extends Activity {
 	private String Login_ID = null;
 	private SensorGeoCacheData Sensor_Data = null;
+	private GetCurrentLocation whereami;
 	
     /** Called when the activity is first created. */
     @Override
@@ -96,7 +97,7 @@ public class OnSensorListClick extends Activity {
 	    
 	    //The following finds the distance and direction the sensor is located
 	    //First create the class GetCurrentLocation and set a current location
-	    GetCurrentLocation whereami = new GetCurrentLocation(this);
+	    whereami = new GetCurrentLocation(this);
 	    Location hereiam = whereami.getLocation();
 	    
 	    //Next set sensor_location
@@ -140,12 +141,20 @@ public class OnSensorListClick extends Activity {
   	//turned off and on to save information use
   	@Override
   	protected void onResume() {
+  		whereami.resumeLocationUpdate();
   		super.onResume();
   	}
   		
   	@Override
   	protected void onPause() {
+  		whereami.stopLocationUpdate();
   		super.onPause();
+  	}
+  	
+  	@Override
+  	protected void onDestroy() {
+  		whereami.stopLocationUpdate();
+  		super.onDestroy();
   	}
     
     public OnClickListener GoNavigate = new OnClickListener() {

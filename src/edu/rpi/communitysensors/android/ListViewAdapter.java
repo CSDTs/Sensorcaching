@@ -18,13 +18,15 @@ public class ListViewAdapter extends BaseAdapter {
 
 	 private Activity activity; 
 	 private ArrayList<SensorGeoCacheData> data; 
-	 private static LayoutInflater inflater=null; 
+	 private static LayoutInflater inflater=null;
+	 private GetCurrentLocation whereami;
 	 
 	 //This takes a SensorGeoCacheData and stores it as data
-	 public ListViewAdapter(Activity a, ArrayList<SensorGeoCacheData> d) { 
+	 public ListViewAdapter(Activity a, ArrayList<SensorGeoCacheData> d, GetCurrentLocation w) { 
 	     activity = a; 
 	     data=d; 
 	     inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE); 
+	     whereami = w;
 	 } 
 	
 	 // This returns the size of the SensorGeoCacheData
@@ -83,7 +85,6 @@ public class ListViewAdapter extends BaseAdapter {
 	     
 	     //The following finds the distance and direction the sensor is located
 		 //First create the class GetCurrentLocation and set a current location
-		 GetCurrentLocation whereami = new GetCurrentLocation(activity.getBaseContext());
 		 Location hereiam = whereami.getLocation();
 		    
 		 //Next set sensor_location

@@ -5,6 +5,7 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -37,7 +38,7 @@ public class SensorLists extends ListActivity{
 	     //http://www.londatiga.net/it/how-to-create-custom-window-title-in-android/
 	     //http://www.edumobile.org/android/android-programming-tutorials/creating-a-custom-title-bar/        
 	     requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
-	     setContentView(R.layout.lists);    
+	     setContentView(R.layout.lists);
 	     
 	     //The following line is used to get elements from the last activity
 	     Bundle extras=getIntent().getExtras();
@@ -77,7 +78,7 @@ public class SensorLists extends ListActivity{
 	     //Here we we start the ListViewAdapter to make the list work
 	     // Getting adapter 
 	     // Create an adapter variable to use the modified listview structure
-		 ListAdapter adapter = new ListViewAdapter(this, listitems); 
+		 ListAdapter adapter = new ListViewAdapter(this, listitems, whereami); 
 		 setListAdapter(adapter);
 		 
 	     //Here we would include code for what occurs when the listview is clicked
@@ -108,9 +109,10 @@ public class SensorLists extends ListActivity{
 		//Fill ListArray listitems with items
 		listitems = new ArrayList<SensorGeoCacheData>();
    	    new QueryDatabase(Activity_ID, Advanced_Search, lat, lon, listitems);
-		ListAdapter adapter = new ListViewAdapter(this, listitems); 
+		ListAdapter adapter = new ListViewAdapter(this, listitems, whereami); 
 		setListAdapter(adapter);
 		super.onResume();
+		whereami.resumeLocationUpdate();
 	}
 		
 	@Override
@@ -119,6 +121,11 @@ public class SensorLists extends ListActivity{
 		whereami.stopLocationUpdate();
 	}
 	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		whereami.stopLocationUpdate();
+	}
 	
 	//The following creates the menu options
 	@Override

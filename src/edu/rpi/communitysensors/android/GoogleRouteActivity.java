@@ -65,6 +65,8 @@ public class GoogleRouteActivity extends MapActivity {
 		   	    requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 		   	    setContentView(R.layout.maps);
 		   	    
+		   	    me = new GetCurrentLocation(mcontext);
+		   	    
 		   	    //The following line is used to get elements from the last activity
 			    Bundle extras=getIntent().getExtras();
 			    //The following line takes the element with key name "title" and stores it as a String
@@ -89,9 +91,9 @@ public class GoogleRouteActivity extends MapActivity {
         public void run() {
            	   mapView.setBuiltInZoomControls(true);
            	   //Log.e("logtag","setBuiltInZoomControls function called");
-           	   me = new GetCurrentLocation(mcontext);
+           	   
            	   Location hereiam = me.getLocation();     	    
-               double fromLat = me.getLatitude(hereiam), fromLon =me.getLongitude(hereiam);
+               double fromLat = me.getLatitude(hereiam), fromLon = me.getLongitude(hereiam);
            	  // double fromLat = 50.3453, fromLon = -70;
            	  // toLat = 40.7155;
               // toLon = -74.0100;
@@ -153,12 +155,19 @@ public class GoogleRouteActivity extends MapActivity {
         @Override
     	protected void onResume() {       	
     		super.onResume();
+    		me.resumeLocationUpdate();
     	}
     		
     	@Override
     	protected void onPause() {
     		me.stopLocationUpdate();
     		super.onPause();
+    	}
+    	
+    	@Override
+    	protected void onDestroy() {
+    		me.stopLocationUpdate();
+    		super.onDestroy();
     	}
         
         @Override
