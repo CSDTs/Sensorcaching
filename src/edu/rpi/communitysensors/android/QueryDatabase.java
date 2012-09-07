@@ -17,6 +17,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.insready.drupalcloud.RESTServerClient;
+import com.insready.drupalcloud.ServiceNotAvailableException;
+
+import android.content.Context;
 import android.net.ParseException;
 import android.util.Log;
 
@@ -24,7 +28,9 @@ import android.util.Log;
 //And create an ArrayList of variables in return
 public class QueryDatabase {
 	
-	public QueryDatabase(int user, String Query, double lat, double lon, ArrayList<SensorGeoCacheData> data){	
+	private RESTServerClient rsc;
+	
+	public QueryDatabase(int user, String Query, double lat, double lon, ArrayList<SensorGeoCacheData> data, Context ctx){	
 		
 		SensorGeoCacheData g;
 		
@@ -51,8 +57,8 @@ public class QueryDatabase {
 		mylatlong.add(new BasicNameValuePair("c_latitude",Double.toString(lat)));
 		mylatlong.add(new BasicNameValuePair("c_longitude",Double.toString(lon)));
 		mylatlong.add(new BasicNameValuePair("c_threshold",Integer.toString(threshold)));
-		try{
-		     HttpClient httpclient = new DefaultHttpClient();
+		//try{
+		     /*HttpClient httpclient = new DefaultHttpClient();
 		     //The below is for the test site
 		     //HttpPost httppost = new HttpPost("http://mobsourcing.cs.rpi.edu/sensorcaching/query.php");
 		     
@@ -80,7 +86,15 @@ public class QueryDatabase {
 		        result=sb.toString();
 		        }catch(Exception e){
 		              Log.e("log_tag", "Error converting result "+e.toString());
-		        }
+		        } */
+			
+		try {
+			//The following sets up the REST server client init parameters
+		    rsc = new RESTServerClient(ctx, "communitysensors.RSC", "http://www.communitysensors.rpi.edu/testserv/", "testserv", new Long(1800000));
+		    result = rsc.getFilteredNodes("type", "sensor_caches");
+		} catch(Exception e) {
+			Log.e("log_tag", "Error getting nodes" + e.toString());
+		}
 		
 		//parsing data
 		//the below variables are used to store data temporarily before
@@ -105,20 +119,49 @@ public class QueryDatabase {
 		String[] sc_owner= new String[5];
 		int[] sc_distance = new int[5];
 */		
-		try{
+		try {
 			  Log.e("QD_tag",result);
 		      jArray = new JSONArray(result);
 		      JSONObject json_data=null;
+		      JSONObject jo = null;
+		      JSONArray ja = null;
 		      for(int i=0;i<jArray.length();i++){
 		             json_data = jArray.getJSONObject(i);
+		             //Below is for the communitySensors data from the REST server
+	            	 sensor_id = json_data.getInt("nid");
+	            	 sensor_name = json_data.getString("title");
+	            	 String node = rsc.nodeGet(sensor_id, "field_sensors_name,field_sensor_type,field_sensor_state,field_sensor_lat,field_sensor_lon,field_sensor_owner");
+	            	 JSONObject nodeJSON = new JSONObject(node);
+	            	 Log.d("QD_tag", node);
+	            	 
+	            	 jo = nodeJSON.getJSONObject("field_sensor_type");
+	            	 ja = jo.getJSONArray("und");
+	            	 sensor_type = ((JSONObject) ja.get(0)).getString("value");
+	            	 
+	            	 jo = nodeJSON.getJSONObject("field_sensor_state");
+	            	 ja = jo.getJSONArray("und");
+	            	 sensor_state=((JSONObject) ja.get(0)).getInt("value");
+	            	 
+	            	 jo=nodeJSON.getJSONObject("field_sensor_lat");
+	            	 ja = jo.getJSONArray("und");
+	            	 sensor_lat=((JSONObject) ja.get(0)).getDouble("value");
+	            	 
+	            	 jo=nodeJSON.getJSONObject("field_sensor_long");
+	            	 ja = jo.getJSONArray("und");
+	            	 sensor_lon = ((JSONObject) ja.get(0)).getDouble("value");
+	            	 
+	            	 jo=nodeJSON.getJSONObject("field_sensor_owner");
+	            	 ja = jo.getJSONArray("und");
+	            	 sensor_creator= ((JSONObject) ja.get(0)).getString("value");
+	            	 
 		             //The below is on real server 
-		             sensor_id=json_data.getInt("field_id_value");
+		             /*sensor_id=json_data.getInt("field_id_value");
 		             sensor_name=json_data.getString("field_name_value");
 		             sensor_type=json_data.getString("field_type_value");
 		             sensor_state=json_data.getInt("field_state_value");
 		             sensor_lat=json_data.getDouble("field_lat_value");
 		             sensor_lon=json_data.getDouble("field_long_value");
-		             sensor_creator=json_data.getString("field_owner_value");
+		             sensor_creator=json_data.getString("field_owner_value");*/
 		             //
 		             /*The below is on the test server
 		             sensor_id=json_data.getInt("sensor_id");
@@ -139,19 +182,18 @@ public class QueryDatabase {
 		             sensor_creator = "Testor";*/
 		             g = new SensorGeoCacheData(sensor_id,sensor_name,sensor_type, sensor_state, sensor_lat, sensor_lon, sensor_creator);
 		     	     data.add(g);
-		     	     Log.e("QD_tag",sensor_name);
+		     	     Log.d("QD_tag",sensor_name);
 		      	}
-		      }
-		      catch(JSONException e){
+		      } catch (JSONException e){
 		    	 Log.e("QD_tag","JSONException");
 		    	 e.printStackTrace();
 		    	 data = new ArrayList<SensorGeoCacheData>();
-		      } 
-			  catch (ParseException e) {
+		      }  catch (ParseException e) {
 				Log.e("QD_tag","ParseException");
 				e.printStackTrace();
+			  } catch (ServiceNotAvailableException e) {
+				  Log.e("QD_tag","ServiceNotAvailableException");
+				e.printStackTrace();
 			}
-		
 		}
-	    
 }
