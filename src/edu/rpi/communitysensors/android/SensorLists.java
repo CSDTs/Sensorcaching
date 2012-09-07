@@ -68,7 +68,7 @@ public class SensorLists extends ListActivity{
     	 lon = whereami.getLongitude(local);
     	 
     	 //Fill ListArray listitems with items
-    	 new QueryDatabase(Activity_ID, Advanced_Search, lat, lon, listitems);
+    	 new QueryDatabase(Activity_ID, Advanced_Search, lat, lon, listitems, getApplicationContext());
     	 
     	 if(listitems == null) {
     		 Toast.makeText(this, "Unable to Load Sensor Data or Sensors are Out of Range", Toast.LENGTH_LONG).show(); 
@@ -107,7 +107,7 @@ public class SensorLists extends ListActivity{
 		//Renew the ListAdapter if user has changed location
 		//Fill ListArray listitems with items
 		listitems = new ArrayList<SensorGeoCacheData>();
-   	    new QueryDatabase(Activity_ID, Advanced_Search, lat, lon, listitems);
+   	    new QueryDatabase(Activity_ID, Advanced_Search, lat, lon, listitems, getApplicationContext());
 		ListAdapter adapter = new ListViewAdapter(this, listitems); 
 		setListAdapter(adapter);
 		super.onResume();
