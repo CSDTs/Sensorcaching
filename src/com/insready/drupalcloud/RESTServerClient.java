@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -161,6 +162,25 @@ public class RESTServerClient implements Client {
 		String uri = url + "node/" + nid;
 		String result = callGet(uri);
 		return result;
+	}
+	
+	public String getAllNodes() throws ServiceNotAvailableException {
+		String uri = url + "node/";
+		String result = callGet(uri);
+		return result;
+	}
+	
+	public String getFilteredNodes(String param, String val) throws ServiceNotAvailableException {
+		String uri;
+		try {
+			uri = url + "node/?parameters[" + URLEncoder.encode(param, "UTF-8") + "]=" + URLEncoder.encode(val, "UTF-8");
+			String result = callGet(uri);
+			return result;
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	@Override
