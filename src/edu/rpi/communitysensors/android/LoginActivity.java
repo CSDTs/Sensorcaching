@@ -45,7 +45,7 @@ public class LoginActivity extends Activity{
         title.setText("  Login");
         
         //The following sets up the REST server client init parameters
-        rsc = new RESTServerClient(getApplicationContext(), "communitysensors.RSC", "http://www.communitysensors.rpi.edu/?q=testserv/", "testserv", new Long(1800000));
+        rsc = new RESTServerClient(getApplicationContext(), "communitysensors.RSC", "http://www.communitysensors.rpi.edu/testserv/", "testserv", new Long(1800000));
         
         //Set the items in the layout
         user = (EditText) findViewById(R.id.editText_username);
