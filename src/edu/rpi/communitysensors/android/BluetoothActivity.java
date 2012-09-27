@@ -11,8 +11,10 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -32,6 +34,8 @@ public class BluetoothActivity extends Activity {
 	private int readBufferPosition;
 	private int counter;
 	private volatile boolean stopWorker;
+	private DataStoreHelper dsh;
+	private SQLiteDatabase db;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,9 @@ public class BluetoothActivity extends Activity {
 		Button connectButton = (Button) findViewById(R.id.b_butconnect);
 		Button uploadButton = (Button) findViewById(R.id.b_butupload);
 		sensorbtname = (TextView) findViewById(R.id.b_textsensorname);
+		
+		dsh = new DataStoreHelper(getApplicationContext());
+		db = dsh.getWritableDatabase();
 		
 		//ConnectButton
 		//Connect to the Bluetooth Device
@@ -94,6 +101,7 @@ public class BluetoothActivity extends Activity {
         Toast.makeText(this, "Downloading Data", Toast.LENGTH_SHORT).show();
 	}
 	private void downloadBT() {
+		
 		final Handler handler = new Handler();
 		final byte deliminter = 10; // This defines the end of character
 									// This is the ASCII code for a newline character
@@ -118,7 +126,7 @@ public class BluetoothActivity extends Activity {
                                     
                                     handler.post(new Runnable() {
                                         public void run() {
-                                            saveData();
+                                            saveData(data);
                                         }
                                     });
                                 }
@@ -137,8 +145,8 @@ public class BluetoothActivity extends Activity {
 		workerThread.start();
 	}
 	
-	private void saveData() {
-		
+	private void saveData(String data) {
+		Log.d("SAVE_DATA", data);
 	}
 	
 	private void closeBT() throws IOException {
@@ -146,6 +154,8 @@ public class BluetoothActivity extends Activity {
 		mOutputStream.close();
 		mInputStream.close();
 		mSocket.close();
+		db.close();
+		dsh.close();
 		Toast.makeText(this, "Bluetooth Closed", Toast.LENGTH_SHORT).show();
 	}
 }
