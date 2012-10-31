@@ -22,8 +22,8 @@
 	        android:layout_width="30dp"
 	        android:layout_height="30dp"
 	        android:layout_centerVertical="true"
-	        android:src="@+id/userimage" 
-	        android:contentDescription="@string/user_image" >       
+	        
+	        android:contentDescription="@string/user_image" >
 	    </ImageView>
 	    
 	    <TextView
